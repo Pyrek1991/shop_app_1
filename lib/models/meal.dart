@@ -11,7 +11,7 @@ enum Complexity {
 // PL To samo robimy z określeniem wartości (ceny) posiłku
 // EU We do the same with determining the value (price) of the meal
 enum Affordability {
-  Affordabe,
+  Affordable,
   Pricey,
   Luxurious,
 }
@@ -35,7 +35,7 @@ class Meal {
   final bool isVegan;
   final bool isVegetarian;
 
-  Meal(
+  const Meal(
       {@required this.id,
         @required this.categories,
         @required this.title,
