@@ -44,18 +44,43 @@ class MealItem extends StatelessWidget {
                     fit: BoxFit.cover,
                   ),
                 ),
-                Text(
-                  title,
-                  style: TextStyle(
-                    fontSize: 26,
-                    color: Colors.white,
+                Positioned(
+                  bottom: 20,
+                  right: 10,
+                  child: Container(
+                    width: 300,
+                    color: Colors.black54,
+                    padding: EdgeInsets.symmetric(
+                      vertical: 4,
+                      horizontal: 20,
+                    ),
+                    child: Text(
+                      title,
+                      style: TextStyle(
+                        fontSize: 26,
+                        color: Colors.white,
+                      ),
+                      // PL zwijanie tekstu
+                      // EN retraction of text
+                      softWrap: true,
+                      // PL jak się nie zmieści poprostu się nie pokaże
+                      // EN if it doesn't fit, it just won't show up
+                      overflow: TextOverflow.fade,
+                    ),
                   ),
-                  softWrap: true, // zwijanie tekstu
-                  overflow: TextOverflow
-                      .fade, // jak się nie zmieniści poprostu się nie pokaże
                 ),
               ],
-            )
+            ),
+            Padding(
+              padding: EdgeInsets.all(20),
+              child: Row(children: <Widget> [
+                Row(children: <Widget> [
+                  Icon(Icons.schedule,),
+                  SizedBox(width: 6,),
+                  Text('$duration min'),
+                ],)
+              ],),
+            ),
           ],
         ),
       ),
