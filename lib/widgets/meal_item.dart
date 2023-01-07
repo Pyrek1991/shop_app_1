@@ -9,6 +9,7 @@ class MealItem extends StatelessWidget {
   final int duration;
   final Complexity complexity;
   final Affordability affordability;
+  final Function removeItem;
 
   MealItem({
     @required this.id,
@@ -17,6 +18,7 @@ class MealItem extends StatelessWidget {
     @required this.duration,
     @required this.complexity,
     @required this.affordability,
+    @required this.removeItem,
   });
 
   // PL getter do okreslenia poziomu trudnosci przygotowania
@@ -57,8 +59,16 @@ class MealItem extends StatelessWidget {
 
   // PL Potrzebna nam ta metoda do prześcia do posiłku który klikniemy na ekranie
   void selectMeal(BuildContext context) {
-    Navigator.of(context).pushNamed(MealDetailScreen.routeName,
-    arguments: id,);
+    Navigator.of(context)
+        .pushNamed(
+          MealDetailScreen.routeName,
+          arguments: id,
+        )
+        .then((result) {
+          if(result != null) {
+            removeItem(result);
+          }
+    });
   }
 
   @override
