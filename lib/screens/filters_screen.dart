@@ -54,6 +54,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
         title: Text('Your Favorites'),
         actions: <Widget>[
           IconButton(
+            icon: Icon(Icons.save),
             onPressed: () {
               final selectedFilters = {
                 'gluten': _glutenFree,
@@ -63,8 +64,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
               };
               widget.saveFilters(selectedFilters);
             },
-            icon: Icon(Icons.save_alt),
-          ),
+          )
         ],
       ),
       drawer: MainDrawer(),
