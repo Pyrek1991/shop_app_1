@@ -4,6 +4,10 @@ import '../widgets/main_drawer.dart';
 class FiltersScreen extends StatefulWidget {
   static const routeName = '/filters';
 
+  final Function saveFilters;
+
+  FiltersScreen(this.saveFilters);
+
   @override
   State<FiltersScreen> createState() => _FiltersScreenState();
 }
@@ -35,6 +39,12 @@ class _FiltersScreenState extends State<FiltersScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Your Favorites'),
+        actions: <Widget>[
+          IconButton(
+            onPressed: widget.saveFilters,
+            icon: Icon(Icons.save_alt),
+          ),
+        ],
       ),
       drawer: MainDrawer(),
       body: Column(
@@ -65,9 +75,9 @@ class _FiltersScreenState extends State<FiltersScreen> {
                   'Lactose-free',
                   'Only include Lactose-free meals',
                   _lactoseFree,
-                      (newValue) {
+                  (newValue) {
                     setState(
-                          () {
+                      () {
                         _lactoseFree = newValue;
                       },
                     );
@@ -77,9 +87,9 @@ class _FiltersScreenState extends State<FiltersScreen> {
                   'Vegetarian',
                   'Only include Vegetarian meals',
                   _vegetarian,
-                      (newValue) {
+                  (newValue) {
                     setState(
-                          () {
+                      () {
                         _vegetarian = newValue;
                       },
                     );
@@ -89,9 +99,9 @@ class _FiltersScreenState extends State<FiltersScreen> {
                   'Vegan',
                   'Only include Vegan meals',
                   _vegan,
-                      (newValue) {
+                  (newValue) {
                     setState(
-                          () {
+                      () {
                         _vegan = newValue;
                       },
                     );
