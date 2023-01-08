@@ -8,7 +8,31 @@ import './screens/filters_screen.dart';
 
 void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  // PL domyślne ustawienie fitrów przy uruchamianiu aplikacji
+  // EN default setting for fiters at application start-up
+  Map<String, bool> _fiters = {
+    'gluten': false,
+    'lactose': false,
+    'vegan': false,
+    'vegetarian': false,
+  };
+
+
+  // TODO Ta  metoda musi być wywołana z poziomu FiltersScreen
+  // PL Metoda, która nie zwróci niczego, prócz ustawione filtry
+  // EN A method that will return nothing but the set filters
+  void _setFilters(Map<String, bool> filterData) {
+    setState(() {
+      _fiters = filterData;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -38,7 +62,7 @@ class MyApp extends StatelessWidget {
           '/': (ctx) => TabsScreen(),
           CategoryMealsScreen.routeName: (ctx) => CategoryMealsScreen(),
           MealDetailScreen.routeName: (ctx) => MealDetailScreen(),
-          FiltersScreen.routeName: (ctx) => FiltersScreen(),
+          FiltersScreen.routeName: (ctx) => FiltersScreen(_setFilters),
         },
         onGenerateRoute: (settings) {
           print(settings.arguments);
